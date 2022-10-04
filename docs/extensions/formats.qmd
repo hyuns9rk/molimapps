@@ -1,0 +1,117 @@
+---
+title: "Creating Formats"
+example-org: lexcorp
+example-format: lexconf
+---
+
+## Overview
+
+Quarto format extensions enable you to add new formats to the built-in formats (e.g. `html`, `pdf`, `docx`) already available. Custom formats can provide default document options, style-sheets, header, footer, or logo elements, and even bundle other extensions like [filters](filters.qmd) and [shortcodes](shortcodes.qmd). They are a great way to provide a common baseline for authoring documents or presentations within an organization, for a particular type of project or analysis, or for a specific publication.
+
+You can specify a custom format beneath the `format` key just like a built-in format. For example:
+
+``` yaml
+----
+title: "My Document"
+format:
+   acm-pdf: 
+     toc: true
+---
+```
+
+Custom formats all derive from one of the base formats, and include that base format as a suffix. Formats can also provide multiple variations that derive from distinct base formats. For example:
+
+``` yaml
+----
+title: "My Document"
+toc: true
+format:
+   acm-pdf: default
+   acm-html: default
+---
+```
+
+Note that we moved the `toc` option to the top level since it is shared between both of the formats.
+
+Custom formats can also be used with the `--to` argument to `quarto render`. For example:
+
+```{.bash filename="Terminal"}
+quarto render document.qmd --to acm-html
+```
+
+Next, we'll walk through the creation of a custom format that extends the `revealjs` presentation format. If you are specifically interested in using or creating custom formats for journals and manuscripts, you may want to proceed instead to the documentation on [Journal Articles](../journals/index.qmd).
+
+## Format Components
+
+Custom formats are a type of [Quarto Extension](index.qmd) and creating a format works much like creating a [filter](filters.qmd) or [shortcode](shortcodes.qmd) extension. We'll walk through a custom format that extends the built-in `revealjs` format as an example. We'll call our format `lexconf`. Here is what the source code repository of the format extension might look like:
+
+``` default
+README.md
+LICENSE
+template.qmd
+_extensions/
+  lexconf/
+    _extension.yml
+    theme.scss
+    logo.png
+    title.png
+```
+
+Note that the format suffix (`revealjs`) is excluded from the directory name (this is to account for the possibility of multiple formats e.g. `lexconf-revealjs`, `lexconf-pptx`, etc.)
+
+As with other types of extensions, the only thing strictly required is the `_extensions` directory (anything above that is for your own purposes and is ignored during format installation). Even so, it's good practice to include a `README.md` and `LICENSE` file. The `template.qmd` file serves a couple of purposes:
+
+1.  It can be rendered as you develop your format to ensure that things work as expected.
+2.  It can serve as the basis for a format template (which helps users gets started with using your format).
+
+Here is what the contents of `_extension.yml` might look like:
+
+``` yaml
+title: LexConf 2022 Presentation
+author: LexCorp
+version: 1.0.0
+contributes:
+  formats:
+    revealjs:
+       theme: [default, theme.scss]
+       logo: logo.png
+       footer: | 
+         Copyright 2022 (c) LexCorp, Inc.
+       title-slide-attributes:
+          data-background-image: title.png
+          data-background-size: contain
+       preview-links: auto
+       
+```
+
+This format mostly provides organization-level content and theming. As mentioned above, formats can also include filters which allow for adding custom markdown constructs and rendering behavior.
+
+Here is what the contents of `template.qmd` might look like:
+
+``` markdown
+---
+title: "Presentation"
+subtitle: "LexConf 2022"
+author: "Your Name"
+date: today
+format: lexconf-revealjs
+---
+
+# Overview
+```
+
+Extension repositories are structured in such a way that you can test your extension and the template by simply rendering the `template.qmd` file right in the root of your repository. The `template.qmd` will be able to load your extension just as it would when installed, so testing and iterating should be as simple as working within your extension directory until you're satisfied (without the need to repeatedly install or update the extension in order to test it).
+
+## Format Templates
+
+Above we described including a `template.qmd` alongside your extension and then installing the template and format together with:
+
+```{.bash filename="Terminal"}
+quarto use template <gh-organization>/<extension>
+```
+
+The `template.qmd` should demonstrate the functionality of the format and serve as a sound starting point for the user. When the extension template is copied into the target directory, the `template.qmd` will automatically be renamed to match the name that the user provided for the directory.
+
+You can also include other files alongside `template.qmd` and they will be copied as well. Note that by default, Quarto will exclude common Github repository files when copying an extension template. This includes any file name or directory starting with a `.` (e.g. `.gitignore`), `README.md`, `LICENSE`, etc.. If you'd like, you can place a `.quartoignore` file in the root of your repository with each line of the file being a glob describing file(s) to ignore (using syntax like a `.gitignore` file).
+
+{{< include _formats-common.qmd >}}

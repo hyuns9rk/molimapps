@@ -1,0 +1,156 @@
+---
+title: "Creating a Book"
+format:
+  html:
+    output-file: index.html
+---
+
+## Overview
+
+Quarto Books are combinations of multiple documents (chapters) into a single manuscript. Books can be created in a variety of formats:
+
+-   HTML
+-   PDF
+-   MS Word
+-   EPUB
+
+HTML books are actually just a special type of [Quarto Website](../websites/website-basics.qmd) and consequently support all of the same features as websites including full-text search. The most important difference is that HTML books use chapter numbers and therefore support [Cross References](../authoring/cross-references.qmd) between different chapters.
+
+Here are some examples of books created with Quarto:
+
+| Book                                                                             | Source                                                        |
+|----------------------------------------------------------------------------------|---------------------------------------------------------------|
+| [Hands on Programming with R](https://jjallaire.github.io/hopr/)                 | [Code](https://github.com/jjallaire/hopr)                     |
+| [Visualization Curriculum](https://jjallaire.github.io/visualization-curriculum) | [Code](https://github.com/jjallaire/visualization-curriculum) |
+
+Quarto books can be published to a wide variety of destinations including GitHub Pages, Netlify, RStudio Connect, or any other static hosting service or intranet web server. See the documentation on [Publishing Websites](../publishing/index.qmd) for additional details.
+
+## Getting Started
+
+To create a new book project, use the Quarto `create-project` command:
+
+``` {.bash filename="Terminal"}
+quarto create-project mybook --type book
+```
+
+This will create the scaffolding for a simple book in the `mybook` sub-directory. To build and view the HTML version of the book use the `preview` command:
+
+``` {.bash filename="Terminal"}
+quarto preview mybook
+```
+
+This will build the HTML version of the book and run a local web server to view it. Here's what you'll see in your browser for the simple book scaffolding:
+
+![](images/book-scaffold.png){.border .preview-image fig-alt="A screenshot of the page rendered by starter code for a Quarto book project."}
+
+The book's chapters are contained in the files `index.qmd`, `intro.qmd`, `summary.qmd`. Try adding some content to one of these files and saving---you'll notice that the book preview is automatically updated in the browser.
+
+You'll also notice that a Quarto project file (`_quarto.yml`) was created in the `mybook` directory. This file contains the initial configuration for your book:
+
+``` yaml
+project:
+  type: book
+
+book:
+  title: "mybook"
+  author: "Jane Doe"
+  date: "8/18/2021"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreport
+  epub:
+    cover-image: cover.png
+```
+
+See the [Project Basics](../projects/quarto-projects.qmd) article to learn more about working with projects, including how to add custom pre and post render scripts to your book.
+
+### VS Code
+
+If you are using VS Code you can open a new workspace with your book project using the `code` command from within VS Code:
+
+``` {.bash filename="Terminal"}
+code mybook
+```
+
+### RStudio
+
+If you are using RStudio you can also create a Quarto book via the **New Project** command:
+
+![](images/rstudio-new-book.png){.border width="531" fig-alt="RStudio New Project Wizard for Create Quarto Book with input fields for directory name and project directory, and radio buttons for creating a git repository and using the visual markdown editor. At the bottom there are buttons to Create Project, and Cancel."}
+
+Render chapters within the book using the **Render** command, render the entire book using the **Render Book** command on the **Build** tab.
+
+## Workflow
+
+### Development
+
+When working on a book, you'll typically run the local development server as described above and incrementally preview content as you work:
+
+``` {.bash filename="Terminal"}
+quarto preview
+```
+
+If you are authoring within RStudio, you can run the development server within the RStudio Viewer pane using the **Serve Book** command on the **Build Tab**.
+
+The development server will automatically re-render input files whenever they change.
+
+Changes to configuration files (e.g. `_quarto.yml`) as well as site resources (e.g. theme or CSS files) will also cause an automatic refresh.
+
+You can customize the behavior of the preview server (port, whether it opens a browser, etc.) using command line options or the `_quarto.yml` config file. See `quarto preview help` or the [project file reference](/docs/reference/projects/options.qmd#preview) for additional details.
+
+::: callout-important
+As you preview your book, chapters will be rendered and updated. However, if you make changes to global options (e.g. `_quarto.yml` or included files) you need to fully re-render your book to have all of the changes reflected. Consequently, you should always fully `quarto render` your book before deploying it, even if you have already previewed changes to some chapters with the preview server.
+:::
+
+### Publishing
+
+When you are ready to publish the book, use the `render` command to render all output formats:
+
+``` {.bash filename="Terminal"}
+quarto render --to all
+```
+
+If you pass no arguments to `quarto render` the default format (HTML) will be rendered. You can also render individual formats via the `--to` argument:
+
+``` {.bash filename="Terminal"}
+quarto render           # render default format (HTML)
+quarto render --to pdf  # render PDF format only
+```
+
+The output of your book will be written to the `_book` sub-directory of your book project:
+
+``` {.bash filename="Terminal"}
+mybook/
+  _book/
+    index.html # and other book files
+    mybook.pdf
+    mybook.epub
+```
+
+See the documentation on [Publishing Websites](../publishing/index.qmd) for details on how to publish books to GitHub Pages, Netlify, and other services. Note that in that documentation the `output-dir` may be referred to as `_site`: for publishing books you should use `_book` rather than `_site`.
+
+## Learning More
+
+Once you've got the basic book template up and running check out these articles for various ways to enhance your book:
+
+[Book Structure](book-structure.qmd) delves into different ways to structure a book (numbered and unnumbered chapters/sections, creating multiple parts, adding appendices, etc.)
+
+[Book Crossrefs](book-crossrefs.qmd) explains how to create cross references to sections, figures, tables, equations and more within books.
+
+[Book Output](book-output.qmd) covers customizing the style and appearance of your book in the various output format as well as how to provide navigation and other tools for readers.
+
+[Book Options](../reference/projects/books.qmd) provides a comprehensive reference to all of the available book options.
+
+[Code Execution](../projects/code-execution.qmd) provides tips for optimizing the rendering of books with large numbers of documents or expensive computations.
+
+[Publishing Websites](../publishing/index.qmd) enumerates the various options for publishing your book as a website including GitHub Pages, Netlify, and RStudio Connect.
