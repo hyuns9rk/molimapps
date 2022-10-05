@@ -2,18 +2,64 @@ project:
   type: website
 
 website:
-  title: "molimweb"
+  # title: "molim"
+  favicon: "/fig/fav.png"
+  page-navigation: true
+  page-footer:
+    left: |
+      Proudly supported by
+      [![](https://cdn.imweb.me/thumbnail/20220513/c9771994ee61d.png){fig-alt="molim Inc." width=90px}](https://www.molim.xyz/)
+    center:
+      - text: "About"
+        href: about.qmd
+      - text: "FAQ"
+        href: docs/faq/index.qmd
+      - text: "License"
+        href: license.qmd
+      - text: "Trademark"
+        href: trademark.qmd
+    right:
+      # - icon: linkedin
+      #   href: https://www.linkedin.com/company/molim/?viewAsMember=true
+      #   aria-label: molim Linkedin
+      - icon: github
+        href: https://github.com/hyuns9rk/molimapps.git
+        aria-label: molim GitHub
   navbar:
+    # logo: /fig/logo.png
+    # logo-alt: "molim logo."
+    # title: "molim"
     left:
       - href: index.qmd
-        text: Home
-      - href: https://molimapps.shinyapps.io/half-life/?_ga=2.36493158.731580083.1664411124-1761618800.1657267939
-        text: T1/2 
-      - about.qmd
+        text: 🏡 홈
+      - href: half-life-app.qmd
+        text: 📉 반감기계산기
+      - href: about.qmd
+        text: 💻 NCA 분석기
+      - href: about.qmd
+        text: 📝 SEND 작성기
+      - href: about.qmd
+        text: 💁 정보
+    
+  sidebar:
+    - id: get-started
+      title: "Get Started"
+      style: "floating"
+      collapse-level: 2
+      align: left
+      contents:
+        - index.qmd
+        - text: "Tutorial: Hello, Quarto"
+          href: half-life-app.qmd
+        - text: "Tutorial: Computations"
+          href: half-life-app.qmd
+        - text: "Tutorial: Authoring"
+          href: half-life-app.qmd
+
 
 format:
   html:
-    theme: cosmo
+    theme: simplex
     css: styles.css
     toc: true
 
