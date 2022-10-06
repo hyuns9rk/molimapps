@@ -1,0 +1,8 @@
+- source: project
+  quarto-pub:
+    - id: a9a95121-a4e4-4738-944d-002787625bad
+      url: 'https://quartopub.com/sites/hyunsprk/molim-meta'
+      
+  netlify:
+  - id: "b3aa7b12-a99e-44a1-97db-18f28633b418"
+    url: "https://lucky-chebakia-033aa2.netlify.app"

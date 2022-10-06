@@ -12,26 +12,5 @@
     "title": "몰림앱",
     "section": "",
     "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "hl.html",
-    "href": "hl.html",
-    "title": "📉 반감기계산기",
-    "section": "",
-    "text": "👋 피드백 환영\n\n\n\n이용해 보시고 불편한 점, 제안하실 것 등 다양한 의견을 전해주세요.\n🏠몰림 📨 contact@molim.xyz"
-  },
-  {
-    "objectID": "hl.html#써보기",
-    "href": "hl.html#써보기",
-    "title": "📉 반감기계산기",
-    "section": "✍ 써보기",
-    "text": "✍ 써보기\n오른쪽 표에 데이터를 채우면 그래프와 반감기계산결과가 출력돼요! 빨강색선은 비선형모형의 적합곡선이고, 파랑색선은 선형모형입니다. 미리 표를 채워 놨어요.\n아래 각 모형을 이용해 추정된 반감기계산결과를 확인하세요. 그래프의 산점도 위에 겹쳐진 각 모형의 곡선의 모양과 각 모형의 반감기계산결과를 서로 비교해 보세요.\n\n\n\n️여기 아래 ⬇ 반감기를 계산할 데이터를 입력해 주세요. \"t\"(time)에는 농도측정시간을, \"conc\"(concentration)에는 농도측정값을 넣어주세요. \n맨 처음값(\"t\" = 0, \"conc\" = 0)은 꼭 있어야 해요. 그리고 가장 높은 농도측정값이 측정된 이후의 농도측정시간들에도 최소 5개의 농도측정값이 입력되어야 합니다🙂 입력과 동시에 왼쪽의 그래프가 업데이트 돼요!"
-  },
-  {
-    "objectID": "hl.html#결과",
-    "href": "hl.html#결과",
-    "title": "📉 반감기계산기",
-    "section": "💻결과",
-    "text": "💻결과\n\n\n\n\n\n\n비선형모형을 이용해 추정한 반감기계산결과\n\n\n\n\n\n\n초반부반감기 =\n\n| 후반부반감기 =\n\n\n\n\n\n\n\n\n\n\n\n\n선형모형을 이용해 추정한 반감기계산결과\n\n\n\n\n\n\n초반부반감기 =\n\n| 후반부반감기 ="
   }
 ]
