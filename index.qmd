@@ -1,5 +1,5 @@
 ---
-title: "몰림앱"
+title: "몰림앱2"
 ---
 
 This is a Quarto website.
