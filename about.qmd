@@ -1,9 +1,8 @@
 ---
-title: "About"
+title: "💁 정보"
+format: 
+  html:
+    page-layout: full
 ---
 
-About this site
-
-```{r}
-1 + 1
-```
+국내 바이오연구자분들께 도움이 되고자 [주식회사 몰림](https://www.molim.xyz/)이 제공하는 웹앱들입니다 🤗

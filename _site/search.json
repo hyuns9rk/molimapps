@@ -2,15 +2,22 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "💁 정보",
     "section": "",
-    "text": "1 + 1\n\n[1] 2"
+    "text": "국내 바이오연구자분들께 도움이 되고자 주식회사 몰림이 제공하는 웹앱들입니다 🤗"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "몰림앱3",
+    "title": "🏆챔피언십 :: 몰림앱",
     "section": "",
-    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "국내 바이오연구자분들께 도움이 되고자 주식회사 몰림이 제공하는 웹앱들입니다 🤗"
+  },
+  {
+    "objectID": "send-app.html",
+    "href": "send-app.html",
+    "title": "",
+    "section": "",
+    "text": "준비 중이예요 🏗️"
   }
 ]

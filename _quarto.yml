@@ -9,15 +9,15 @@ website:
     left: |
       Proudly supported by
       [![](https://cdn.imweb.me/thumbnail/20220513/c9771994ee61d.png){fig-alt="molim Inc." width=90px}](https://www.molim.xyz/)
-    center:
-      - text: "About"
-        href: about.qmd
-      - text: "FAQ"
-        href: docs/faq/index.qmd
-      - text: "License"
-        href: license.qmd
-      - text: "Trademark"
-        href: trademark.qmd
+    # center:
+    #   - text: "About"
+    #     href: about.qmd
+    #   - text: "FAQ"
+    #     href: docs/faq/index.qmd
+    #   - text: "License"
+    #     href: license.qmd
+    #   - text: "Trademark"
+    #     href: trademark.qmd
     right:
       # - icon: linkedin
       #   href: https://www.linkedin.com/company/molim/?viewAsMember=true
@@ -34,27 +34,27 @@ website:
         text: 🏡 홈
       - href: half-life-app.qmd
         text: 📉 반감기계산기
-      - href: about.qmd
+      - href: nca-app.qmd
         text: 💻 NCA 분석기
-      - href: about.qmd
+      - href: send-app.qmd
         text: 📝 SEND 작성기
       - href: about.qmd
         text: 💁 정보
     
-  sidebar:
-    - id: get-started
-      title: "Get Started"
-      style: "floating"
-      collapse-level: 2
-      align: left
-      contents:
-        - index.qmd
-        - text: "Tutorial: Hello, Quarto"
-          href: half-life-app.qmd
-        - text: "Tutorial: Computations"
-          href: half-life-app.qmd
-        - text: "Tutorial: Authoring"
-          href: half-life-app.qmd
+  # sidebar:
+  #   - id: get-started
+  #     title: "Get Started"
+  #     style: "floating"
+  #     collapse-level: 2
+  #     align: left
+  #     contents:
+  #       - index.qmd
+  #       - text: "Tutorial: Hello, Quarto"
+  #         href: half-life-app.qmd
+  #       - text: "Tutorial: Computations"
+  #         href: half-life-app.qmd
+  #       - text: "Tutorial: Authoring"
+  #         href: half-life-app.qmd
 
 
 format:
